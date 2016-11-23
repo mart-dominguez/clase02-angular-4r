@@ -1,0 +1,17 @@
+{
+  "name": "ejemploapp02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 4000"
+  },
+  "author": "martdominguez",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "angular-router": "0.0.2"
+  }
+}

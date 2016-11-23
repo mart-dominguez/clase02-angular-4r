@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="estilos/custom.css">
+<script>
+var TareaDao = function (dbUsar) {
+	this.tareas = [];	
+	this.db = dbUsar;
+};
+
+TareaDao.prototype.guardar = function(tarea) {
+		console.log(this);
+		this.db.insertar(tarea);
+		this.tareas.push(tarea);
+}
+
+var MyDBLocal = function (clave) {
+	this.clave=clave;
+	this.db = window.localStorage;
+};
+
+MyDBLocal.prototype.insertar = function(data) {
+	this.db.setItem(this.clave,data);
+}
+
+var MyDBSession =  function (clave) {
+	this.clave=clave;
+	this.db = window.sessionStorage;
+};
+
+MyDBSession.prototype.insertar = function(data) {
+	this.db.setItem(this.clave,data);
+}
+
+var MyDBRest = function (clave,url) {
+	this.api = clave;	
+	this.url = url;
+};
+
+MyDBRest.prototype.insertar = function(data) {
+	console.log("enviar peticion http a api rest con datos "+data)
+}
+
+</script>
+</head>
+<body >
+<header>
+	<h1>Gestion Tareas</h1>	
+</header><!-- /header -->
+<div class="contenedor">
+</div>
+	<script>
+		var tareaDao = new TareaDao(new MyDBRest("..","..."));
+		console.log(tareaDao.tareas.length==0);
+		tareaDao.guardar({id:1,nombre:"trabajar"});
+		console.log(tareaDao.tareas.length==1);
+	</script>
+</body>
+</html>

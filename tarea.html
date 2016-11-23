@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="estilos/custom.css">
+<script>
+var TareaDao = function () {
+	this.tareas = [];	
+	this.db = window.sessionStorage;
+};
+
+TareaDao.prototype.guardar = function(tarea) {
+		console.log(this)
+		this.tareas.push(tarea);
+		this.db.setItem("listaTareas",tarea);
+}
+
+
+</script>
+</head>
+<body >
+<header>
+	<h1>Gestion Tareas</h1>	
+</header><!-- /header -->
+<div class="contenedor">
+</div>
+<script>
+var tareaDao = new TareaDao();
+tareaDao.guardar({id:1,nombre:"trabajar"});
+console.log(tareaDao);
+</script>
+</body>
+</html>
